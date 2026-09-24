@@ -1,0 +1,119 @@
+#include "background.h"
+
+#include <base/str.h>
+
+#include <engine/map.h>
+#include <engine/shared/config.h>
+
+#include <game/client/components/mapimages.h>
+#include <game/client/components/maplayers.h>
+#include <game/client/gameclient.h>
+#include <game/layers.h>
+#include <game/localization.h>
+
+CBackground::CBackground(ERenderType MapType, bool OnlineOnly) :
+	CMapLayers(MapType, OnlineOnly)
+{
+	m_pLayers = new CLayers;
+	m_pBackgroundLayers = m_pLayers;
+	m_pImages = new CMapImages;
+	m_pBackgroundImages = m_pImages;
+	m_Loaded = false;
+	m_aMapName[0] = '\0';
+}
+
+CBackground::~CBackground()
+{
+	delete m_pBackgroundLayers;
+	delete m_pBackgroundImages;
+}
+
+void CBackground::OnInit()
+{
+	m_pBackgroundMap = CreateMap();
+	m_pMap = m_pBackgroundMap.get();
+
+	m_pImages->OnInterfacesInit(GameClient());
+	m_MediaBackground.Init(Graphics(), Storage());
+	if(g_Config.m_ClBackgroundEntities[0] != '\0' && str_comp(g_Config.m_ClBackgroundEntities, CURRENT_MAP))
+		LoadBackground();
+}
+
+void CBackground::LoadBackground()
+{
+	if(m_Loaded && m_pMap == m_pBackgroundMap.get())
+		m_pMap->Unload();
+
+	m_Loaded = false;
+	m_pMap = m_pBackgroundMap.get();
+	m_pLayers = m_pBackgroundLayers;
+	m_pImages = m_pBackgroundImages;
+
+	str_copy(m_aMapName, g_Config.m_ClBackgroundEntities);
+	if(g_Config.m_ClBackgroundEntities[0] != '\0')
+	{
+		bool NeedImageLoading = false;
+
+		char aBuf[IO_MAX_PATH_LENGTH];
+		str_format(aBuf, sizeof(aBuf), "maps/%s%s", g_Config.m_ClBackgroundEntities, str_endswith(g_Config.m_ClBackgroundEntities, ".map") ? "" : ".map");
+		if(str_comp(g_Config.m_ClBackgroundEntities, CURRENT_MAP) == 0)
+		{
+			m_pMap = GameClient()->Map();
+			if(m_pMap->IsLoaded())
+			{
+				m_pLayers = GameClient()->Layers();
+				m_pImages = &GameClient()->m_MapImages;
+				m_Loaded = true;
+			}
+		}
+		else if(m_pMap->Load(g_Config.m_ClBackgroundEntities, Storage(), aBuf, IStorage::TYPE_ALL))
+		{
+			m_pLayers->Init(m_pMap, true, true);
+			NeedImageLoading = true;
+			m_Loaded = true;
+		}
+
+		if(m_Loaded)
+		{
+			if(NeedImageLoading)
+			{
+				m_pImages->LoadBackground(m_pLayers, m_pMap);
+			}
+			CMapLayers::OnMapLoad();
+		}
+	}
+}
+
+void CBackground::OnMapLoad()
+{
+	if(str_comp(g_Config.m_ClBackgroundEntities, CURRENT_MAP) == 0 || str_comp(g_Config.m_ClBackgroundEntities, m_aMapName))
+	{
+		LoadBackground();
+	}
+}
+
+void CBackground::OnRender()
+{
+	if(Client()->State() != IClient::STATE_ONLINE && Client()->State() != IClient::STATE_DEMOPLAYBACK)
+	{
+		m_MediaBackground.Unload();
+		return;
+	}
+
+	// My custom: local custom background (png/mp4) behind the entity layers, visual only.
+	// Update() (video decode) only runs while the background is actually visible.
+	m_MediaBackground.SyncFromConfig(g_Config.m_McGameBackground, g_Config.m_McBackgroundPath);
+	if(g_Config.m_McGameBackground && g_Config.m_ClOverlayEntities > 0)
+	{
+		m_MediaBackground.Update();
+		m_MediaBackground.Render();
+	}
+
+	if(!m_Loaded)
+		return;
+
+	if(g_Config.m_ClOverlayEntities != 100)
+		return;
+
+	CMapLayers::OnRender();
+}
