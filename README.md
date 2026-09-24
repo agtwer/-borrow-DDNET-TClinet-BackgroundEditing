@@ -44,7 +44,6 @@
 
 - 只做背景相关改动，未触碰玩法逻辑，因此**不影响平衡**，也不会影响联机兼容性（客户端侧视觉改动）。
 - Wallpaper Engine 的**声音部分尚未测试**；其余功能均已在实机截图验证。
-- 曾实现过、后经本人决定删除的功能：游戏内转码（H.264/H.265/AV1）、DLSS/FSR/XeSS「超分」栏与显卡能力置灰、液态玻璃材质。原因：2D 背景没有运动矢量/深度等额外信息，引擎内「超分」最多只是更好的插值，不可能增加真实细节。
 
 ---
 
@@ -94,4 +93,3 @@
 
 - Only background-related changes were made; no gameplay logic was touched, so **balance is unaffected** and online compatibility is preserved (client-side visual changes only).
 - The **sound part of Wallpaper Engine is not tested yet**; every other feature was verified in game with screenshots.
-- Features that were implemented and then removed on purpose: in-game transcoding (H.264/H.265/AV1), the DLSS/FSR/XeSS "upscaling" tab with GPU capability greying, and the liquid-glass material. Reason: a 2D background has no motion vectors or depth, so in-engine "upscaling" can only ever be a better filter and can never add real detail.
