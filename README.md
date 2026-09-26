@@ -11,7 +11,7 @@
 
 ## 添加功能（验证基本通过）
 
-### 设置 → Background 页
+### 设置 → 模块（Modules）→ 背景
 
 - **自定义背景**：主菜单背景与游戏内实体层背景，两个独立开关；理论支持主流图片与主流视频格式实现动态与静态背景展示
 - **背景列表**：列出背景文件夹内容，点一行即切换；另有「打开背景文件夹」与「重载」按钮、以及状态行（已载入 / 失败原因）
@@ -19,7 +19,7 @@
 - **背景适配**（折叠表）：auto / 屏幕尺寸 / 多个预设（只决定背景画面比例，不改变游戏分辨率）
 - **播放分辨率**（折叠表）：默认原始片源（不压缩），也可限制到 2160p/1440p/1080p/720p —— 只决定解码尺寸
 - **显示方式**（折叠表）：上下均等裁剪 / 左右均等裁剪 / 拉伸 / 平铺 —— 完整覆盖、不留黑边，并有一行「当前实际」告示实际生效的裁剪方向
-- **Wallpaper Engine 壁纸**：直接用 Wallpaper Engine 的视频/图片壁纸（不含场景和网页壁纸），理论支持壁纸自带声音、音量、失焦暂停（未测试）
+- **Wallpaper Engine 壁纸**：直接用 Wallpaper Engine 的视频/图片壁纸（不含场景和网页壁纸）
 - **选项阴影**：按五档分级命名 —— 完全透明 / 朦胧 / 淡藏 / 微淡 / 正常
 - **主菜单大标题**显隐开关
 
@@ -43,7 +43,7 @@
 ## 说明
 
 - 只做背景相关改动，未触碰玩法逻辑，因此**不影响平衡**，也不会影响联机兼容性（客户端侧视觉改动）。
-- Wallpaper Engine 的**声音部分尚未测试**；其余功能均已在实机截图验证。
+- Wallpaper Engine 壁纸仅播放视频/图片（不含场景与网页壁纸）；壁纸自带声音**未实现**，相关 UI 已移除。
 
 ---
 
@@ -60,7 +60,7 @@
 
 ## Added features (basically verified)
 
-### Settings → Background page
+### Settings → Modules → Background
 
 - **Custom background**: independent toggles for the main-menu background and for the in-game entity-layer background; mainstream image and video formats are theoretically supported for both static and dynamic backgrounds
 - **Background list**: lists the contents of the background folder, one click switches to a file; plus "open backgrounds folder" and "reload" buttons and a status line (loaded / failure reason)
@@ -68,7 +68,7 @@
 - **Background fit** (collapsible list): auto / screen size / several presets (decides the background's picture aspect only, never the game resolution)
 - **Video decode resolution** (collapsible list): the source size by default (no downscaling), optionally capped to 2160p/1440p/1080p/720p — decode size only
 - **Display mode** (collapsible list): equal crop top/bottom, equal crop left/right, stretch, tile — always fully covered with no letterboxing, plus an "effective" line that states which crop direction is actually in use
-- **Wallpaper Engine wallpapers**: use Wallpaper Engine video/image wallpapers directly (scenes and web wallpapers are not supported); the wallpaper's own sound, volume and pause-on-blur are theoretically supported (**untested**)
+- **Wallpaper Engine wallpapers**: use Wallpaper Engine video/image wallpapers directly (scenes and web wallpapers are not supported); 
 - **Option shadow**: five named levels — transparent / hazy / faint / subtle / normal
 - **Main-menu title** toggle
 
@@ -92,4 +92,4 @@
 ## Notes
 
 - Only background-related changes were made; no gameplay logic was touched, so **balance is unaffected** and online compatibility is preserved (client-side visual changes only).
-- The **sound part of Wallpaper Engine is not tested yet**; every other feature was verified in game with screenshots.
+- Wallpaper Engine support plays video/image wallpapers only (no scenes or web wallpapers); playing the wallpaper's own sound was never implemented and its UI has been removed.

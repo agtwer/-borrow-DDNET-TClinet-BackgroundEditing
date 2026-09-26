@@ -54,7 +54,7 @@ void CMenus::RenderSettings(CUIRect MainView)
 		TCLocalize("TClient"), // TClient
 		Localize("Profiles"), // TClient
 		Localize("Configs"), // TClient
-		Localize("Background"), // Background (formerly "My custom")
+		TCLocalize("Modules"), // 模块主栏：其下每个模块一个子栏（Background 等）
 		Localize("Credits")};
 	static CButtonContainer s_aTabButtons[SETTINGS_LENGTH];
 

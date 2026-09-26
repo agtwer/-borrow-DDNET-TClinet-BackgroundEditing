@@ -297,9 +297,6 @@ MACRO_CONFIG_INT(McBackgroundThreads, mc_background_threads, 4, 0, 64, CFGFLAG_C
 // Background source: use your own file, or a Wallpaper Engine wallpaper.
 // These live in the same tab because they are two ways to pick the same thing.
 MACRO_CONFIG_INT(McBackgroundSource, mc_background_source, 0, 0, 1, CFGFLAG_CLIENT | CFGFLAG_SAVE, "Background source: 0 = your own image/video file, 1 = a Wallpaper Engine wallpaper")
-MACRO_CONFIG_INT(McWeSound, mc_we_sound, 0, 0, 1, CFGFLAG_CLIENT | CFGFLAG_SAVE, "Play the Wallpaper Engine wallpaper's own sound")
-MACRO_CONFIG_INT(McWeVolume, mc_we_volume, 50, 0, 100, CFGFLAG_CLIENT | CFGFLAG_SAVE, "Wallpaper Engine wallpaper volume in percent")
-MACRO_CONFIG_INT(McWePauseOnBlur, mc_we_pause_on_blur, 1, 0, 1, CFGFLAG_CLIENT | CFGFLAG_SAVE, "Pause the Wallpaper Engine wallpaper when the game loses focus")
 MACRO_CONFIG_STR(McWePath, mc_we_path, IO_MAX_PATH_LENGTH, "", CFGFLAG_CLIENT | CFGFLAG_SAVE, "Selected Wallpaper Engine wallpaper (workshop id or folder path)")
 // Menu presentation
 MACRO_CONFIG_INT(McUiPanelAlpha, mc_ui_panel_alpha, 25, 0, 25, CFGFLAG_CLIENT | CFGFLAG_SAVE, "Opacity of the black panel ('shadow') behind menu options/rows and section boxes: 0..25 where 25 = the built-in default and 0 = no shadow at all. The settings page offers five equal steps: 0 transparent, 6 hazy, 13 faint, 19 subtle, 25 normal")

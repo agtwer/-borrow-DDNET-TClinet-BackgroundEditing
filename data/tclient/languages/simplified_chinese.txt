@@ -1026,12 +1026,6 @@ Requires GeForce RTX 50 series
 == 需要 GeForce RTX 50 系列
 Only usable if the game already ships the corresponding NVIDIA runtime
 == 仅当游戏本身已集成对应 NVIDIA 运行库时可用
-Play wallpaper sound
-== 播放壁纸声音
-Pause the wallpaper when the game loses focus
-== 游戏失去焦点时暂停壁纸
-Wallpaper volume
-== 壁纸音量
 Found wallpapers
 == 已找到壁纸
 no wallpapers found
@@ -1040,8 +1034,8 @@ Wallpapers (video and image only)
 == 壁纸列表（仅视频与图片）
 Nothing found. Scene and application wallpapers are not supported.
 == 未找到内容。不支持场景（scene）与应用程序类壁纸。
-My own file
-== 我自己的文件
+Custom file
+== 自选文件
 Wallpaper
 == 壁纸
 none selected
@@ -1052,16 +1046,6 @@ Wallpaper Engine wallpapers (video and image only)
 == Wallpaper Engine 壁纸（仅视频与图片）
 Nothing found. Scene and application wallpapers are not supported.
 == 未找到内容。不支持场景（scene）与应用程序类壁纸。
-Wallpaper sound
-== 壁纸声音
-Play wallpaper sound
-== 播放壁纸声音
-Pause the wallpaper when the game loses focus
-== 游戏失去焦点时暂停壁纸
-Wallpaper volume
-== 壁纸音量
-Wallpaper sound is applied when the background video has an audio track.
-== 当背景视频带音轨时，壁纸声音设置才会生效。
 auto (detect screen)
 == 自动（识别屏幕）
 Supported by the detected GPU
@@ -1144,3 +1128,6 @@ Subtle
 == 微淡
 Normal
 == 正常
+Modules
+== 模块
+
