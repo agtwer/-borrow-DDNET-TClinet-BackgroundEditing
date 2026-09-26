@@ -1,3 +1,3 @@
 ## Cross-compiling on Linux/Windows to Android
 
-Cross-compilation to Android is explained in a [`separate guide`](/docs/BUILDING-android.md).
+Use `download_android_sdk.sh` to fetch the SDK/NDK, then `cmake_android.sh` to configure and build with `cmake/FindAndroid.cmake`.
